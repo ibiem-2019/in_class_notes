@@ -134,3 +134,178 @@ ls()
 ls(all.names = TRUE)
 ```
 
+# Monday 8/12
+
+## Vectorization
+
+```{r}
+1:5
+```
+```{r}
+15:27
+```
+
+```{r}
+2^3
+```
+
+```{r}
+2^(1:5)
+```
+
+```{r}
+x = 1:5
+2^x
+```
+
+```{r}
+ls()
+```
+
+```{r}
+ls
+```
+
+```{r}
+rm(x)
+```
+
+```{r}
+x = 1
+y = 2
+z = 3
+```
+
+```{r}
+rm(list = ls())
+```
+
+
+```{r}
+a <- 10
+b <- 20
+
+```
+
+
+```{r}
+rm(list <- ls())
+```
+
+## Packages
+```{r}
+installed.packages()
+```
+
+
+```{r}
+library(dplyr)
+1:10 %>%
+  max
+```
+```{r}
+dplyr::filter
+
+```
+
+```{r}
+stats::filter
+
+```
+```{r}
+mass <- 47.5
+age <- 122
+mass <- mass * 2.3
+age <- age - 20
+```
+
+```{r}
+mass > age
+```
+```{r}
+rm(mass)
+rm(age)
+```
+
+```{r}
+rm(mass,age)
+```
+
+
+```{r}
+rm(list=ls())
+```
+
+
+```{r}
+?left_join
+```
+
+
+```{r}
+help(left_join)
+```
+
+```{r}
+band_members %>% inner_join(band_instruments)
+```
+```{r}
+band_members
+```
+
+```{r}
+band_instruments
+```
+
+```{r}
+band_members %>% inner_join(band_instruments)
+```
+```{r}
+?"<-"
+```
+
+```{r}
+vignette("dplyr")
+```
+
+
+```{r}
+library(nycflights13)
+
+filter(flights, month == 1, day == 1)
+```
+```{r}
+??filter
+```
+
+# SessionInfo
+```{r}
+sessionInfo()
+```
+```{r}
+c(1, 2, 'f')
+
+```
+```{r}
+c(1, 2, 'f')%>%
+  as.numeric
+
+```
+
+```{r}
+paste("a","b", sep=".")
+```
+
+```{r}
+paste(c("a","c"), "b", sep=".")
+```
+
+```{r}
+paste(c("a","c"), "b", sep=".", collapse=",")
+```
+
+```{r}
+library(readr)
+read_csv
+```
+
