@@ -24,4 +24,4 @@ ggplot(data = gapminder,
        mapping = aes(x = gdpPercap, y = lifeExp)) 
 ```
 
-stopped before challenge #1
+## Layers
