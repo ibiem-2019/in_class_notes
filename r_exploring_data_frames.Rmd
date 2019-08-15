@@ -1,0 +1,235 @@
+---
+title: "r_exploring_data_frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Adding columns and rows
+```{r}
+cats = read.csv("data/feline-data.csv")
+cats
+```
+```{r}
+age = c(2,3,5)
+age
+```
+
+```{r}
+cbind(cats,age)
+```
+
+```{r}
+cats
+```
+```{r}
+age = c(2,3,5,12)
+cbind(cats, age)
+```
+```{r}
+age = c(2,3,5)
+cats = cbind(cats, age)
+cats
+```
+
+```{r}
+newRow = list("tortoiseshell", 3.3, TRUE, 9)
+cats
+cats = rbind(cats, newRow)
+```
+## Factors
+```{r}
+levels(cats$coat)
+```
+```{r}
+levels(cats$coat) = c(levels(cats$coat), "tortoiseshell")
+levels(cats$coat)
+```
+
+```{r}
+cats = rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
+```
+
+```{r}
+str(cats)
+```
+```{r}
+cats$coat = as.character(cats$coat)
+str(cats)
+```
+
+```{r}
+human_age = cats$age * 7
+human_age
+```
+```{r}
+as.factor(human_age)
+```
+```{r}
+as.numeric(as.factor(human_age))
+```
+```{r}
+as.numeric(as.factor(human_age))/7
+1:3/7
+```
+
+```{r}
+as.character(as.factor(human_age))
+as.numeric(as.character(as.factor(human_age)))
+as.numeric(as.character(as.factor(human_age)))/7
+
+```
+
+### Removing rows
+
+```{r}
+cats
+```
+
+```{r}
+cats[-4, ]
+```
+```{r}
+cats[c(-4,-2), ]
+```
+
+```{r}
+na.omit(cats)
+cats
+cats = na.omit(cats)
+cats
+```
+
+### Remove columns
+```{r}
+cats[,-4]
+```
+
+```{r}
+names(cats)
+```
+```{r}
+c("coat", "weight", "likes_string", "age") %in% c("age", "weight")
+```
+
+```{r}
+names(cats) %in% c("age", "weight")
+```
+
+```{r}
+q = names(cats) %in% c("age")
+q
+```
+```{r}
+cats[,!q]
+```
+
+```{r}
+cats[,c(1,3)]
+```
+
+
+```{r}
+cats = rbind(cats, cats)
+```
+
+```{r}
+rownames(cats) = NULL
+cats
+```
+
+## Realistic Example
+
+```{r}
+list.files()
+dir.create("data")
+```
+
+```{r}
+download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
+gapminder <- read.csv("data/gapminder_data.csv")
+```
+
+```{r}
+gapminder = read.csv("data/gapminder_data.csv")
+```
+
+```{r}
+str(gapminder)
+```
+
+```{r}
+summary(gapminder$country)
+```
+
+```{r}
+class(gapminder)
+```
+```{r}
+x = 3
+x
+```
+
+```{r}
+length(gapminder)
+```
+
+```{r}
+nrow(gapminder)
+```
+
+```{r}
+ncol(gapminder)
+```
+
+```{r}
+dim(gapminder)
+```
+
+```{r}
+names(gapminder)
+```
+```{r}
+colnames(gapminder)
+```
+```{r}
+rownames(gapminder)
+```
+
+```{r}
+head(gapminder)
+```
+
+```{r}
+tail(gapminder, n=15)
+```
+```{r}
+?sample
+```
+
+```{r}
+sample(nrow(gapminder),1)
+
+```
+
+```{r}
+n=1
+num_rows_in_gapminder = 1704
+myrow_num=sample(num_rows_in_gapminder,n)
+gapminder[myrow_num,]
+
+```
+
+```{r}
+n=1
+myrow_num=sample(nrow(gapminder),n)
+gapminder[myrow_num,]
+
+```
+```{r}
+gapminder[32,]
+
+```
+

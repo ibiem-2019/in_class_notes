@@ -1,0 +1,27 @@
+---
+title: "data_viz"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+gapminder = read.csv("data/gapminder_data.csv")
+```
+
+
+```{r}
+library("ggplot2")
+ggplot(data = gapminder,
+       mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = gdpPercap, y = lifeExp)) 
+```
+
+stopped before challenge #1

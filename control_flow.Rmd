@@ -1,0 +1,112 @@
+---
+title: "control flow"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+x = 18
+if (x>=10){
+  print("x is greater than or equal to 10")
+}
+```
+```{r}
+x = 18
+if(x >= 10) {
+  print("x gte 10")
+} else {
+  print("x lt 10")
+}
+
+```
+```{r}
+x = 4
+if(x >= 10) {
+  print("x gte 10")
+} else if (x > 15) {
+  print("x is gt 5, but lt 10")
+} else {
+  print("x lt 5")
+}
+
+```
+
+
+```{r}
+if(2002 %in% gapminder$year){print("Found 2002")}else{
+  "no 2002"
+}
+```
+```{r}
+gapminder$year==2002
+```
+```{r}
+head(gapminder)
+```
+
+```{r}
+for (i in 1:10){
+  print(i)
+}
+```
+
+```{r}
+for (i in 1:10){
+  print("Hello")
+}
+```
+
+```{r}
+for(i in 1:5) {
+  for(j in c("a", "b", "c")){
+    print(paste(i,j))
+  }
+}
+```
+
+```{r}
+output_vector = c()
+for(i in 1:5){
+  for (j in c("a","b","c","d")){
+    temp_output = paste(i,j)
+    output_vector = c(output_vector, temp_output)
+    output_vector
+  }
+}
+```
+
+```{r}
+output_matrix = matrix(nrow=5, ncol=5) 
+j_vector = c("a","b","c","d","e")
+for(i in 1:5){
+  for (j in 1:5){
+    temp_j = j_vector[j]
+    temp_output = paste(i,temp_j)
+    output_matrix[i,j] = temp_output
+  }
+}
+output_vector2 = as.vector(output_matrix)
+output_vector2
+
+```
+
+
+
+```{r eval=FALSE, include=FALSE}
+while(1) {
+  print("Hello")
+}
+```
+
+```{r}
+z = 1
+while(z > 0.1) {
+  z = runif(1)
+  cat(z, "\n")
+  }
+```
+
+

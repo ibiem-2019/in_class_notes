@@ -296,6 +296,8 @@ c(1, 2, 'f')%>%
 paste("a","b", sep=".")
 ```
 
+
+
 ```{r}
 paste(c("a","c"), "b", sep=".")
 ```
@@ -309,3 +311,459 @@ library(readr)
 read_csv
 ```
 
+# Tuesday 8/13
+
+```{r}
+cats = data.frame(coat = c("calico", "black", "tabby"),
+                  weight = c(2.1, 5.0, 3.2),
+                  likes_string = c(1,0,1))
+```
+
+```{r}
+coat = c("calico", "black", "tabby")
+weight = c(2.1, 5.0, 3.2)
+likes_string = c(1,0,1)
+```
+
+```{r}
+cats = data.frame(coat,
+                  weight,
+                  likes_string)
+```
+
+```{r eval=FALSE, include=FALSE}
+cats = data.frame(c("calico", "black", "tabby"),
+                  c(2.1, 5.0, 3.2),
+                  c(1,0,1))
+```
+
+```{r}
+dir.create("data")
+```
+
+
+```{r}
+write.csv(x = cats, file = "data/feline-data.csv",
+          row.names = FALSE)
+```
+
+```{r}
+list.files()
+```
+
+```{r}
+cats = read.csv("data/feline-data.csv")
+```
+
+```{r}
+cats$weight
+```
+
+```{r}
+cats$coat
+```
+
+```{r}
+cats$weight 
+```
+
+```{r}
+cats$weight + 2
+```
+
+```{r}
+paste("My cat is", cats$coat)
+```
+
+```{r}
+cats$weight + cats$coat
+```
+
+```{r}
+cats = data.frame(coat = c("calico", "black", "tabby"),
+                  weight = c(2.1, 50.0, 3.2),
+                  likes_string = c(1,0,1))
+```
+
+```{r}
+data.frame(coat = c("calico", "black", "tabby"),
+                  weight = c(2.1, 50.0, 3.2),
+                  likes_string = c(1,0,1))
+```
+
+
+## Data Types
+
+```{r}
+typeof(cats$weight)
+```
+```{r}
+typeof(3.14)
+```
+
+```{r}
+typeof(217L)
+```
+```{r}
+typeof(1)
+```
+
+```{r}
+typeof(1+1i)
+```
+
+```{r}
+typeof(TRUE)
+```
+```{r}
+typeof("banana")
+```
+
+
+```{r}
+cats = read.csv(file="data/feline-data_v2.csv")
+cats
+```
+
+```{r}
+typeof(cats$weight)
+```
+```{r}
+cats$weight
+```
+
+```{r}
+class(cats)
+```
+
+```{r}
+class(cats$likes_string)
+```
+
+```{r}
+cats = read.csv("data/feline-data.csv")
+```
+
+
+## Vectors and Type Coercion
+
+```{r}
+my_vector = vector(length = 3)
+my_vector
+```
+```{r}
+another_vector = vector(mode="character", length=3)
+another_vector
+```
+
+```{r}
+str(another_vector)
+```
+```{r}
+y = 25
+x = y + 3
+z = x + 7
+z
+```
+
+
+```{r}
+str(cats$weight)
+```
+```{r}
+str(cats)
+```
+
+
+```{r}
+combine_vector = c(2, 6, 3)
+combine_vector
+```
+
+```{r}
+quiz_vector = c(2,"3", 6)
+quiz_vector
+```
+
+```{r}
+coercerion_vector = c("a", TRUE)
+coercerion_vector
+```
+```{r}
+another_coercion_vector = c(TRUE, 0)
+another_coercion_vector
+typeof(another_coercion_vector)
+```
+
+```{r}
+typeof(0)
+```
+
+
+```{r}
+character_vector_example = c("0", "2", "4")
+character_vector_example
+```
+
+```{r}
+character_coerced_to_numeric = as.numeric(character_vector_example)
+character_coerced_to_numeric
+```
+
+```{r}
+numeric_coerced_to_logical = as.logical(character_coerced_to_numeric)
+numeric_coerced_to_logical
+```
+
+```{r}
+cats$likes_string
+```
+
+```{r}
+cats$likes_string = as.logical(cats$likes_string)
+cats
+```
+
+```{r}
+ab_vector = c("a","b")
+ab_vector
+```
+
+```{r}
+combine_example = c(ab_vector, "SWC")
+combine_example
+```
+
+```{r}
+mySeries = 1:10
+mySeries
+```
+
+```{r}
+seq(10)
+```
+
+```{r}
+seq(3,10)
+```
+
+```{r}
+seq(3, 10, by=0.1)
+```
+
+```{r}
+sequence_example = seq(10)
+sequence_example
+```
+
+```{r}
+head(sequence_example)
+```
+
+```{r}
+head(sequence_example, n=4)
+```
+
+```{r}
+tail(sequence_example, n=4)
+```
+
+```{r}
+length(sequence_example)
+```
+
+```{r}
+class(sequence_example)
+```
+
+```{r}
+typeof(sequence_example)
+```
+
+```{r}
+my_example = 5:8
+my_example
+```
+
+```{r}
+names(my_example) = c("a", "b", "c", "d")
+my_example
+```
+
+```{r}
+challenge = (1:26) * 2
+names(challenge) = LETTERS
+print(challenge)
+```
+
+## Data Frames
+
+```{r}
+str(cats$weight)
+```
+```{r}
+str(cats$likes_string)
+```
+
+```{r}
+str(cats$coat)
+```
+
+
+```{r}
+cats$coat
+```
+
+```{r}
+coats = c("tabby", "tortoiseshell","tortoiseshell", "black", "tabby")
+coats
+```
+```{r}
+str(coats)
+```
+
+```{r}
+CATegories = factor(coats)
+class(CATegories)
+```
+```{r}
+str(CATegories)
+```
+
+```{r}
+typeof(CATegories)
+```
+
+```{r}
+typeof(coats)
+```
+
+
+```{r}
+levels(CATegories)
+```
+
+```{r}
+cats
+```
+
+```{r}
+cats = read.csv("data/feline-data.csv", stringsAsFactors =  FALSE)
+cats
+```
+
+```{r}
+mydata = c("case", "control", "control", "case")
+my_data_factor = factor(mydata)
+my_data_factor
+```
+```{r}
+factor_ordering = factor(mydata, levels = c("control", "case"))
+factor_ordering
+```
+
+## Lists
+
+```{r}
+list_example = list(1, "a", TRUE, 1+4i)
+list_example
+```
+
+```{r}
+another_list = list(title = "Numbers", numbers = 1:10, data = TRUE)
+another_list
+```
+
+```{r}
+typeof(cats)
+```
+
+```{r}
+cats
+```
+```{r}
+cats[,1]
+```
+
+```{r}
+cats[1,]
+```
+```{r}
+another_list[1 ]
+```
+```{r}
+str(cats[1])
+```
+
+```{r}
+str(cats$coat)
+```
+
+```{r}
+str(cats[[1]])
+```
+```{r}
+cats$coat
+```
+
+```{r}
+str(cats["coat"])
+```
+```{r}
+str(cats[1])
+```
+
+```{r}
+str(cats[1,1])
+```
+
+```{r}
+str(cats[,3])
+```
+
+```{r}
+cats[1:2,]
+```
+
+## Matrices
+```{r}
+matrix_example = matrix(0, ncol=6, nrow=3)
+matrix_example
+```
+
+```{r}
+class(matrix_example)
+```
+
+```{r}
+typeof(matrix_example)
+```
+
+```{r}
+str(matrix_example)
+```
+
+```{r}
+dim(matrix_example)
+```
+
+```{r}
+nrow(matrix_example)
+```
+
+```{r}
+ncol(matrix_example)
+```
+
+```{r}
+length(matrix_example)
+```
+
+```{r}
+matrix_example2 = matrix(1:150,ncol=5,nrow=10)
+matrix_example2
+```
+```{r}
+matrix_example3 = matrix(1:150,ncol=5,nrow=10,byrow=TRUE)
+matrix_example3
+```
