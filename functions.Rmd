@@ -1,0 +1,187 @@
+---
+title: "functions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+1 + 3
+```
+
+
+```{r}
+fahr_to_kelvin = function (temp){
+  kelvin = ((temp-32) * (5/9))  + 273.15
+  return(kelvin)
+}
+```
+
+```{r}
+x = fahr_to_kelvin(24)
+```
+
+```{r}
+kelvin_to_celsius = function(temp){
+  celsius = (temp - 273.15)
+  return(celsius)
+}
+```
+
+
+```{r}
+kelvin_to_celsius(300)
+```
+
+```{r}
+f_to_c = function(temp){
+  return(kelvin_to_celsius(fahr_to_kelvin(temp)))
+}
+```
+
+```{r}
+library(magrittr)
+fahr_to_celsius = function(temp){
+  temp %>%
+    fahr_to_kelvin %>%
+    kelvin_to_celsius %>%
+    return
+}
+```
+
+```{r}
+fahr_to_celsius(70)
+```
+
+
+```{r}
+f_to_c(70)
+```
+
+
+
+## Defensive Programming
+
+
+
+```{r}
+fahr_to_celsius('apple')
+```
+
+```{r}
+fahr_to_kelvin = function (temp){
+  if(!is.numeric(temp)){
+    stop("temp must be a numeric vector")
+  }
+  kelvin = ((temp-32) * (5/9))  + 273.15
+  return(kelvin)
+}
+```
+
+```{r}
+fahr_to_kelvin(70)
+```
+
+```{r}
+fahr_to_kelvin("apple")
+```
+
+
+```{r}
+fahr_to_kelvin("70")
+```
+
+```{r}
+fahr_to_kelvin = function (temp){
+  stopifnot(is.numeric(temp))
+  kelvin = ((temp-32) * (5/9))  + 273.15
+  return(kelvin)
+}
+```
+
+```{r}
+library(magrittr)
+fahr_to_celsius = function(temp){
+  stopifnot(is.numeric(temp))
+  temp %>%
+    fahr_to_kelvin %>%
+    kelvin_to_celsius %>%
+    return
+}
+```
+```{r}
+fahr_to_celsius(75)
+```
+
+
+```{r}
+fahr_to_celsius("cat")
+```
+
+this is information 
+
+```{r}
+# Takes a dataset and multiplies the pop column
+# with the GDP per capita column
+calcGDP = function(dat){
+  gdp = dat$pop * dat$gdpPercap
+  return(gdp)
+}
+```
+
+
+```{r}
+calcGDP(head(gapminder))
+```
+
+```{r}
+calcGDP = function(dat, year=NULL, country=NULL){
+  if(!is.null(year)){
+    dat = dat[dat$year %in% year, ]
+  }
+  if (!is.null(country)){
+    dat = dat[dat$country %in% country,]
+  }
+  gdp = dat$pop * dat$gdpPercap
+  
+  new = cbind(dat, gdp = gdp)
+  return(new)
+}
+```
+
+```{r}
+calcGDP = function(dat, year, country){
+  if(!is.null(year)){
+    dat = dat[dat$year %in% year, ]
+  }
+  if (!is.null(country)){
+    dat = dat[dat$country %in% country,]
+  }
+  gdp = dat$pop * dat$gdpPercap
+  
+  new = cbind(dat, gdp = gdp)
+  return(new)
+}
+```
+
+```{r}
+unique(gapminder$year)
+```
+
+```{r}
+calcGDP()
+```
+
+```{r}
+# calcGDP(gapminder, year=c(2002, 1992), country="Mali")
+x = calcGDP(gapminder, year=c(2002, 1992), country="Mali")
+gapminder = calcGDP(gapminder, year=c(2002, 1992), country="Mali")
+
+```
+
+```{r}
+gdp
+```
+

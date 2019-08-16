@@ -25,3 +25,139 @@ ggplot(data = gapminder,
 ```
 
 ## Layers
+
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = year, y = lifeExp, colour=continent)) +
+  geom_point() +
+  scale_color_manual(values=c("blue", "green", "orange","purple","gray"))
+```
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = year, y = lifeExp, by=country, colour=continent)) +
+  geom_point() +
+  geom_line()
+```
+
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = year, y = lifeExp, by=country)) +
+  geom_line(mapping = aes(color=continent)) +
+  geom_point()
+
+```
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = year, y = lifeExp, by=country)) +
+  geom_point() +
+  geom_line(mapping = aes(color=continent))
+
+```
+
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x =  gdpPercap, y = lifeExp)) +
+  geom_point(alpha =0.1) +
+  scale_x_log10()
+```
+
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x =  gdpPercap, y = lifeExp)) +
+  geom_point(alpha =0.5) +
+  scale_x_log10() +
+  geom_smooth(method = "lm", size = 3)
+```
+
+## Facetting
+
+```{r}
+head(gapminder$country)
+```
+
+```{r}
+starts.with = substr(gapminder$country, start=1, stop=1)
+az.countries = gapminder[starts.with %in% c("A", "Z"),]
+ggplot(data = az.countries,
+       mapping = aes(x = year,
+                     y= lifeExp,
+                     color = continent)) +
+  geom_line() +
+  facet_wrap(~country)
+```
+
+```{r}
+starts.with = substr(gapminder$country, start=1, stop=1)
+az.countries = gapminder[starts.with %in% c("A", "Z"),]
+ggplot(data = az.countries,
+       mapping = aes(x = year,
+                     y= lifeExp,
+                     color = continent)) +
+  geom_line() +
+  facet_wrap(~country) +
+  labs(
+    x = "Year",
+    y = "Life Expectancy",
+    title = "Figure 1",
+    color= "Continent"
+  ) +
+  theme(axis.text.x = element_text(angle=45, hjust = 1))
+```
+
+```{r}
+dir.create("results")
+starts.with = substr(gapminder$country, start=1, stop=1)
+az.countries = gapminder[starts.with %in% c("A", "Z"),]
+lifeExp_plot = ggplot(data = az.countries,
+       mapping = aes(x = year,
+                     y= lifeExp,
+                     color = continent)) +
+  geom_line() +
+  facet_wrap(~country) +
+  labs(
+    x = "Year",
+    y = "Life Expectancy",
+    title = "Figure 1",
+    color= "Continent"
+  ) +
+  theme(axis.text.x = element_text(angle=45, hjust = 1))
+
+print(lifeExp_plot)
+ggsave(filename = 'results/lifeExp.png',lifeExp_plot,
+       width = 12,
+       height = 10,
+       dpi = 300, 
+       units = "cm")
+```
+
+
+## Challenge 3
+```{r}
+str(gapminder)
+```
+Create a density plot of GDP per capita, filled by continent.
+
+Advanced:
+
+Transform the x axis to better visualise the data spread.
+Add a facet layer to panel the density plots by year.
+
+```{r}
+ggplot(data = gapminder,
+       mapping = aes(x = gdpPercap,
+                     fill=continent)) +
+  geom_density()
+```
