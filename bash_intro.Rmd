@@ -1,0 +1,163 @@
+---
+title: "bash intro"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{bash}
+pwd
+```
+
+```{bash}
+ls --color
+```
+
+```{bash}
+cd /home/guest/
+pwd
+```
+
+```{bash}
+ls /home/guest/planets/a.dat
+```
+
+```{bash}
+ls -F
+```
+```{bash}
+ls --help
+```
+
+```{bash}
+ssh
+```
+
+
+
+```{bash}
+ls -j
+```
+
+```{bash}
+pwd
+cd /home
+pwd
+```
+
+```{bash}
+pwd
+cd /home
+pwd
+```
+
+```{bash}
+cd
+ls -F -a
+```
+
+```{bash}
+cd
+ls -F -a
+```
+```{bash}
+ls -aF
+```
+```{bash}
+cd /home/guest
+pwd
+```
+
+```{bash}
+cd 
+pwd
+```
+
+
+```{bash}
+cd ../..
+pwd
+```
+
+```{bash}
+ls -aF
+```
+
+```{bash}
+ls ..
+```
+
+```{bash}
+ls .
+```
+
+```{bash}
+head bash_intro.Rmd
+```
+```{bash}
+head ./bash_intro.Rmd
+```
+```{bash}
+ls ../planets
+```
+```{bash}
+head ../planets/mars.txt
+```
+
+```{bash}
+ls ../in_class_notes/
+```
+
+```{bash}
+ls .
+```
+
+```{bash}
+ls ~
+```
+```{bash}
+cd 
+pwd
+```
+
+```{bash}
+cd ~
+pwd
+```
+
+
+```{bash}
+ls ~
+```
+
+```{bash}
+ls
+```
+```{bash}
+ls ~/planets
+```
+
+```{bash}
+ls /home/guest
+```
+
+```{bash}
+ls -F
+```
+```{bash}
+ls data
+```
+```{bash}
+ls guest
+```
+
+```{bash}
+ls -F
+```
+```{bash}
+mkdir test
+```
+
