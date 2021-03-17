@@ -161,3 +161,77 @@ ls -F
 mkdir test
 ```
 
+```{bash}
+ls -F
+```
+
+```{bash}
+ls test
+```
+
+```{bash}
+mv test/test.txt .
+```
+```{bash}
+cp test.txt another_test.txt
+```
+
+```{bash}
+mv test.txt awesome_file.txt
+```
+
+```{bash}
+rm awesome_file.txt
+```
+
+```{bash}
+rm test
+```
+
+```{bash}
+rmdir test
+```
+
+```{bash}
+mkdir test
+touch test/empty.txt
+```
+
+```{bash}
+rmdir test
+```
+
+```{bash}
+mkdir test
+rm -ri test
+```
+```{bash}
+ls -l
+```
+
+```{bash}
+ls -l tidyr.Rmd
+```
+
+```{bash}
+head *o*
+```
+
+```{bash}
+MYVAR="5"
+
+echo $MYVAR
+```
+
+```{bash}
+echo $MYVAR
+```
+
+
+
+
+```{bash}
+echo "STuff"
+```
+
+
